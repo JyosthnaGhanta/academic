@@ -9,35 +9,28 @@ const LoginPage = ({ setIsLoggedIn }) => {
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
-        e.preventDefault();
-        setErrorMessage("");
+    e.preventDefault();
+    setErrorMessage("");
 
-        try {
-            console.log('Attempting login with:', { regdNo }); 
+    const users = [
+        { regdNo: "221FA23023", password: "23023" },
+        { regdNo: "221FA23041", password: "23041"},
+        { regdNo: "221FA18106", password: "18106"},
+        { regdNo: "221FA18058", password: "18058" }
+    ];
 
-            const response = await fetch("https://academic-navigator-backend.onrender.com/api/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ regdNo, password }),
-            });
+    // ✅ Check if user exists
+    const user = users.find(user => user.regdNo === regdNo && user.password === password);
 
-            const data = await response.json();
-            console.log('Login response:', data); 
+    if (user) {
+        localStorage.setItem('token', "dummy-token");  // Fake token for session
+        setIsLoggedIn(true);
+        navigate("/dashboard");
+    } else {
+        setErrorMessage("Invalid registration number or password.");
+    }
+};
 
-            if (data.success) {
-                localStorage.setItem('token', data.token);
-                setIsLoggedIn(true);
-                navigate("/dashboard");
-            } else {
-                setErrorMessage(data.message || "Login failed. Please check your credentials.");
-            }
-        } catch (error) {
-            console.error("Login error:", error);
-            setErrorMessage("Network error occurred. Please try again.");
-        }
-    };
 
     return (
         <div className="login-container">
