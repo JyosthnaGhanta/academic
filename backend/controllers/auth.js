@@ -8,7 +8,7 @@ const authController = {
             
             console.log('Login attempt with:', { regdNo, password });
 
-            const user = await User.findOne({ 'Regd.No': regdNo });
+            const user = await User.findOne({ regdNo });
             
             console.log('User found:', user);
 
@@ -26,7 +26,7 @@ const authController = {
                 });
             }
 
-            const token = jwt.sign({ regdNo: user.Regd.No }, process.env.JWT_SECRET, {
+            const token = jwt.sign({ regdNo: user.regdNo }, process.env.JWT_SECRET, {
                 expiresIn: '1h'
             });
 
