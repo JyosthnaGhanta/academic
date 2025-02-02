@@ -1,0 +1,153 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .dashboard-header {
+    background-color: #a05126;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 50px; 
+    padding:5px;
+  }
+  
+  .right-icon {
+    margin-right: 10px;
+  }
+
+  .dashboard-header .search-bar-container {
+    flex-grow: 1;
+    margin: 0 20px;
+  }
+  
+  .dashboard-header .search-bar {
+    width: 95%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  
+  .logout-button {
+    background-color: #c1976a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin:5px;
+    font-size: 16px;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff1a1a;
+  }
+  
+  .image-container{
+    background-color: white;
+  }
+  .dashboard-section {
+    flex-grow: 1;
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #f8f8f8;
+    color:black;
+  }
+  
+  .dashboard-section h2,
+  .dashboard-section h3 {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-section p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px; 
+  }
+  
+  .feature {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 -5px 5px rgba(169, 86, 50, 0.5),5px 0 5px rgba(169, 86, 50, 0.5), 0 2px 4px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease;
+  }
+
+  .feature:hover {
+    transform: scale(1.1);
+  }
+
+  .feature img {
+     width :100px; 
+     height :100px; 
+     object-fit :cover; 
+     margin-bottom :20px; 
+     transition: transform 0.3s ease; 
+  }
+  .feature:hover img {
+    transform: scale(1.1); 
+}
+  .feature h3 {
+     font-size :24px; 
+     margin-bottom :10px; 
+  }
+  
+  .feature p { 
+     font-size :16px; 
+     color :#666; 
+  }
+  
+  .dashboard-footer {
+     background-color :#a05126; 
+     color :white; 
+     text-align:center; 
+     padding :20px; 
+  }
+.scrolling-container {
+    width: 80%;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    margin: 20px auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slideshow-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .scrolling-container img {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .slideshow-image:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s ease-in-out;
+  }
+  
