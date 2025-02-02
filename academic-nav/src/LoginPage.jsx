@@ -13,9 +13,10 @@ const LoginPage = ({ setIsLoggedIn }) => {
         setErrorMessage("");
 
         try {
-            console.log('Attempting login with:', { regdNo }); 
+            console.log('Attempting login with:', { regdNo });
 
-            const response = await fetch("http://localhost:3000/api/auth/login", {
+            // Specify the correct login route
+            const response = await fetch("https://academic-navigator-backend.onrender.com/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -24,7 +25,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
             });
 
             const data = await response.json();
-            console.log('Login response:', data); 
+            console.log('Login response:', data);
 
             if (data.success) {
                 localStorage.setItem('token', data.token);
