@@ -1,18 +1,27 @@
-const User = require('../models/User'); // Import User Model
+const users = [
+    { regdNo: "221FA23023", password: "yourpassword", name: "Jyosthna" },
+    { regdNo: "221FA23024", password: "password123", name: "User1" },
+    { regdNo: "221FA23025", password: "pass456", name: "User2" },
+    { regdNo: "221FA23026", password: "securepass", name: "User3" }
+];
 
 const login = async (req, res) => {
-    const { regdNo, password } = req.body;
     try {
-        const user = await User.findOne({ regdNo });
+        console.log("Incoming login request:", req.body); 
+
+        const { regdNo, password } = req.body;
+        if (!regdNo || !password) {
+            return res.status(400).json({ success: false, message: "Missing credentials" });
+        }
+
+        const user = users.find(user => user.regdNo === regdNo && user.password === password);
+        console.log("User found:", user);
+
         if (!user) {
-            return res.status(400).json({ success: false, message: "User not found" });
+            return res.status(400).json({ success: false, message: "Invalid credentials" });
         }
 
-        if (user.password !== password) {
-            return res.status(400).json({ success: false, message: "Incorrect password" });
-        }
-
-        res.json({ success: true, message: "Login successful" });
+        res.json({ success: true, message: "Login successful", user });
     } catch (error) {
         console.error("Login error:", error);
         res.status(500).json({ success: false, message: "Server error during login" });
