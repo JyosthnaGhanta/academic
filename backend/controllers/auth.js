@@ -8,7 +8,8 @@ const authController = {
             
             console.log('Login attempt with:', { regdNo, password });
 
-            const user = await User.findOne({ regdNo });
+            const user = await User.findOne({ "Regd.No": regdNo });
+
             
             console.log('User found:', user);
 
