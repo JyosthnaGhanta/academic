@@ -12,7 +12,9 @@ const authRoutes = require('./routes/auth');
 const authMiddleware = require('./middleware/auth');
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'https://academic-navigator-frontend.onrender.com', // Replace with your frontend URL
+}));
 app.use(express.json());
 
 // MongoDB connection (Improved connection handling)
